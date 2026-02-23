@@ -1,0 +1,51 @@
+/* -------- Center Activity Bar icons -------- */
+/*
+   We use BOTH .part.sidebar and .pane-composite-part bases (red outline
+   proved .part.sidebar > .title matches) and broad descendant selectors
+   so wrapper-div differences between VSCode versions don't break it.
+*/
+
+/* ===== A) Activity bar in sidebar TITLE area ===== */
+
+/* 1. Stretch composite-bar-container to fill the title row.
+      VS Code source only sets flex:1 on the header-or-footer variant,
+      NOT on the title variant — this is why previous attempts failed. */
+.monaco-workbench .part.sidebar > .title .composite-bar-container,
+.monaco-workbench .pane-composite-part:not(.panel) > .title .composite-bar-container {
+    flex: 1 1 auto !important;
+}
+
+/* 2. Stretch composite-bar inside it */
+.monaco-workbench .part.sidebar > .title .composite-bar-container .composite-bar,
+.monaco-workbench .pane-composite-part:not(.panel) > .title .composite-bar-container .composite-bar {
+    width: 100% !important;
+}
+
+/* 3. Stretch action-bar inside composite-bar */
+.monaco-workbench .part.sidebar > .title .composite-bar .monaco-action-bar,
+.monaco-workbench .pane-composite-part:not(.panel) > .title .composite-bar .monaco-action-bar {
+    width: 100% !important;
+}
+
+/* 4. CENTER the icons */
+.monaco-workbench .part.sidebar > .title .composite-bar .actions-container,
+.monaco-workbench .pane-composite-part:not(.panel) > .title .composite-bar .actions-container {
+    justify-content: center !important;
+}
+
+/* ===== B) Activity bar in HEADER-OR-FOOTER area ===== */
+.monaco-workbench .pane-composite-part:not(.panel) > .header-or-footer .composite-bar-container .composite-bar {
+    width: 100% !important;
+}
+.monaco-workbench .pane-composite-part:not(.panel) > .header-or-footer .composite-bar .monaco-action-bar {
+    width: 100% !important;
+}
+.monaco-workbench .pane-composite-part:not(.panel) > .header-or-footer .composite-bar .actions-container {
+    justify-content: center !important;
+}
+
+/* ===== C) Classic Activity Bar (side position) ===== */
+.monaco-workbench .activitybar > .content .composite-bar .monaco-action-bar .actions-container {
+    justify-content: center !important;
+}
+
